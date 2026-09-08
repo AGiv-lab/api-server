@@ -11,10 +11,13 @@ const logger = require('./middleware/logger.js');
 const validator = require('./middleware/validator.js');
 const notFoundHandler = require('./error-handlers/404.js');
 const errorHandler = require('./error-handlers/500.js');
+const instrumentsRouter = require('./routes/instruments.js');
+const moviesRouter = require('./routes/movies.js');
 
 const app = express();
 
 app.use(logger);
+app.use(express.json());
 
 /**
  * Responds with the validated person's name.
@@ -28,6 +31,8 @@ function getPerson(req, res) {
 }
 
 app.get('/person', validator, getPerson);
+app.use('/instruments', instrumentsRouter);
+app.use('/movies', moviesRouter);
 
 app.use(notFoundHandler);
 app.use(errorHandler);
