@@ -4,10 +4,10 @@
   "description": "Modular Express.js server with middleware, validation, error handling, automated testing, CI, and cloud deployment.",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage",
+    "test": "NODE_ENV=test jest --coverage",
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test-watch": "jest --coverage --watchAll"
+    "test-watch": "NODE_ENV=test jest --coverage --watchAll"
   },
   "repository": {
     "type": "git",

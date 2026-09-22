@@ -18,6 +18,9 @@ const sequelize = databaseUrl
 const Instrument = defineInstrument(sequelize, DataTypes);
 const Movie = defineMovie(sequelize, DataTypes);
 
+Movie.hasMany(Instrument, { foreignKey: 'movieId' });
+Instrument.belongsTo(Movie, { foreignKey: 'movieId' });
+
 async function connect() {
   if (!databaseUrl) {
     throw new Error('Set DATABASE_URL (or TEST_DATABASE_URL for tests)');
