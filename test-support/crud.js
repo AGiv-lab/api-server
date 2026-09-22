@@ -10,7 +10,7 @@ module.exports = function crudTests(path, Model, initial, changes) {
     const ids = [];
     beforeAll(async () => {
       await connect();
-      await Model.sync();
+      await sequelize.sync();
     });
     afterAll(async () => {
       try {
